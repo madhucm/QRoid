@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mainPageHeading">Generate QR code.</string>
+    <string name="app_name">QRoid</string>
+    <string name="textViewHeading">Enter Text.</string>
+    <string name="smsViewHeading">Enter SMS Details.</string>
+    <string name="urlViewHeading">Enter URL.</string>
+    <string name="emailViewHeading">Enter Email.</string>
+    <string name="contactViewHeading">Enter Contact Details.</string>
+</resources>

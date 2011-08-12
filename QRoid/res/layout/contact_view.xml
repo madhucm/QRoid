@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:gravity="top">
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/linearLayout1"
+		android:background="#C0C0C0">
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/contactViewHeading"
+			android:textSize="20sp" android:textColor="#000000"
+			android:textStyle="bold" android:id="@+id/label" />
+	</LinearLayout>
+	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:id="@+id/tableLayout" android:layout_below="@id/linearLayout1"
+		android:layout_marginTop="20dp">
+		<TableRow>
+			<TextView android:id="@+id/textName" android:text="Name:" />
+			<EditText android:id="@+id/contactName" android:width="200px"
+				android:layout_marginLeft="30dp" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textcompany" android:text="Company:" />
+			<EditText android:id="@+id/contactCompany" android:width="200px"
+				android:layout_marginLeft="30dp" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textphone" android:text="Phone:" />
+			<EditText android:id="@+id/contactPhone" android:width="200px"
+				android:layout_marginLeft="30dp" android:inputType="phone" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textemail" android:text="Email:" />
+			<EditText android:id="@+id/contactEmail" android:width="200px"
+				android:layout_marginLeft="30dp" android:inputType="textEmailAddress" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textAddress" android:text="Address:" />
+			<EditText android:id="@+id/contactAddress" android:width="200px"
+				android:layout_marginLeft="30dp" />
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/textWebsite" android:text="Website:" />
+			<EditText android:id="@+id/contactWebsite" android:width="200px"
+				android:layout_marginLeft="30dp" android:inputType="textUri" />
+		</TableRow>
+		<TableRow android:layout_marginTop="30dp">
+			<Button android:id="@+id/okBtn" android:text="Ok"
+				android:layout_width="wrap_content" android:onClick="showContactQRImage"/>
+			<Button android:id="@+id/okCancel" android:text="Cancel"
+				android:layout_width="wrap_content" android:onClick="goHome" />
+		</TableRow>
+
+
+	</TableLayout>
+
+
+
+
+
+
+</RelativeLayout>

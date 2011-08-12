@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.QRoid.main" android:versionCode="1" android:versionName="1.0">
+
+
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity android:name=".BuildMainPage" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:label="Create Text QR code." android:name="com.QRoid.activity.views.TextViewActivity"></activity>
+		<activity android:label="Create SMS QR code." android:name="com.QRoid.activity.views.SMSViewActivity"></activity>
+		<activity android:label="Create URL QR code." android:name="com.QRoid.activity.views.URLViewActivity"></activity>
+		<activity android:label="Create EMAIL QR code." android:name="com.QRoid.activity.views.EmailViewActivity"></activity>
+		<activity android:label="Create Contact QR code." android:name="com.QRoid.activity.views.ContactViewActivity"></activity>
+		<activity android:label="Your QR Image." android:name="com.QRoid.activity.views.QRImageView"></activity>
+	</application>
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+</manifest>

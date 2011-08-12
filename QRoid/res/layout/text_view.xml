@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" android:layout_height="match_parent">
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/linearLayout1"
+		android:background="#C0C0C0">
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="@string/textViewHeading"
+			android:textSize="20sp" android:textColor="#000000"
+			android:textStyle="bold" android:id="@+id/label" />
+
+	</LinearLayout>
+
+	<EditText android:id="@+id/text_view_entry" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:background="@android:drawable/editbox_background"
+		android:layout_below="@+id/linearLayout1" />
+	<Button android:id="@+id/text_view_ok_btn" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_below="@+id/text_view_entry"
+		android:layout_alignParentRight="true" android:layout_marginLeft="10dip"
+		android:text="OK" android:onClick="showQRtextImage"/>
+	<Button android:layout_width="wrap_content" android:id="@+id/text_view_cancel_btn"
+		android:layout_height="wrap_content" android:layout_toLeftOf="@+id/text_view_ok_btn"
+		android:layout_alignTop="@+id/text_view_ok_btn" android:text="Cancel" android:onClick="goHome"/>
+</RelativeLayout>
