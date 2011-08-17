@@ -30,10 +30,8 @@ public class BuildMainPage extends ListActivity
 	private Vector<RowData> data;
 	RowData rd;
 	Intent intent = null;
-	static final String[] title = new String[] {
-		"Text", "URL","SMS","Contact","Email"   	};
-	static final String[] detail = new String[] {
-		"Creates Text QR Code","Creates URL QR Code","Creates SMS QR Code","Creates Contact QR Code","Creates Email QR Code"	};
+	static String[] title = null;
+	static String[] detail = null;
 	private Integer[] imgid = {
 			R.drawable.text,R.drawable.url,R.drawable.sms,
 			R.drawable.contact,R.drawable.email
@@ -43,6 +41,8 @@ public class BuildMainPage extends ListActivity
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//setContentView(R.layout.main);
+		title =  getResources().getStringArray(R.array.title);
+		detail = getResources().getStringArray(R.array.detail);
 		mInflater = (LayoutInflater) getSystemService(
 				Activity.LAYOUT_INFLATER_SERVICE);
 		data = new Vector<RowData>();

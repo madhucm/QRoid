@@ -7,4 +7,18 @@
     <string name="urlViewHeading">Enter URL.</string>
     <string name="emailViewHeading">Enter Email.</string>
     <string name="contactViewHeading">Enter Contact Details.</string>
+    <string-array name="title">
+    	<item>Text</item>
+    	<item>URL</item>
+    	<item>SMS</item>
+    	<item>Contact</item>
+    	<item>Email</item>
+    </string-array>
+    <string-array name="detail">
+    	<item>Creates Text QR Code</item>
+    	<item>Creates URL QR Code</item>
+    	<item>Creates SMS QR Code</item>
+    	<item>Creates Contact QR Code</item>
+    	<item>Creates Email QR Code</item>
+    </string-array>
 </resources>
