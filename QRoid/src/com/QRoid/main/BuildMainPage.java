@@ -16,6 +16,9 @@ import android.content.Intent;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -36,6 +39,27 @@ public class BuildMainPage extends ListActivity
 			R.drawable.text,R.drawable.url,R.drawable.sms,
 			R.drawable.contact,R.drawable.email
 	};
+	
+	 public boolean onCreateOptionsMenu(Menu menu) {
+	      MenuInflater inflater = getMenuInflater();
+	      inflater.inflate(R.menu.config_menu, menu);
+	      return true;
+	    }
+	 
+	 @Override
+	 public boolean onOptionsItemSelected(MenuItem item) {
+	     // Handle item selection
+	     switch (item.getItemId()) {
+	     case R.id.config_screen:
+	         
+	         return true;
+	     case R.id.quit_menu:
+	         finish();
+	         return true;
+	     default:
+	         return super.onOptionsItemSelected(item);
+	     }
+	 }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -89,6 +113,12 @@ public class BuildMainPage extends ListActivity
 				+(position+1)+"th item",  Toast.LENGTH_SHORT).show();*/
 	}
 
+	@Override
+	public void finish()
+	{
+		super.finish();
+	}
+	
 	private class RowData
 	{
 		protected int mId;
