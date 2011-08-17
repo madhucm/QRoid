@@ -48,10 +48,10 @@ public class BuildMainPage extends ListActivity
 	 
 	 @Override
 	 public boolean onOptionsItemSelected(MenuItem item) {
-	     // Handle item selection
+	     // Handle menu selection
 	     switch (item.getItemId()) {
 	     case R.id.config_screen:
-	         
+	         //show list of image size.
 	         return true;
 	     case R.id.quit_menu:
 	         finish();
@@ -108,9 +108,7 @@ public class BuildMainPage extends ListActivity
 			intent = new Intent(BuildMainPage.this,EmailViewActivity.class);
 			startActivity(intent);
 		}
-
-		/*Toast.makeText(getApplicationContext(), "You have selected "
-				+(position+1)+"th item",  Toast.LENGTH_SHORT).show();*/
+		
 	}
 
 	@Override
