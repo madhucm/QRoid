@@ -2,17 +2,20 @@ package com.QRoid.main;
 
 
 import java.util.Vector;
+import android.util.Log;
 
 import com.QRoid.activity.views.ContactViewActivity;
 import com.QRoid.activity.views.EmailViewActivity;
 import com.QRoid.activity.views.SMSViewActivity;
 import com.QRoid.activity.views.TextViewActivity;
 import com.QRoid.activity.views.URLViewActivity;
+import com.QRoid.common.QRConstants;
 
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ParseException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,31 +38,51 @@ public class BuildMainPage extends ListActivity
 	Intent intent = null;
 	static String[] title = null;
 	static String[] detail = null;
+	SharedPreferences imageSizePref = null;
+	SharedPreferences.Editor prefsEditor = null;
+	
 	private Integer[] imgid = {
 			R.drawable.text,R.drawable.url,R.drawable.sms,
 			R.drawable.contact,R.drawable.email
 	};
-	
-	 public boolean onCreateOptionsMenu(Menu menu) {
-	      MenuInflater inflater = getMenuInflater();
-	      inflater.inflate(R.menu.config_menu, menu);
-	      return true;
-	    }
-	 
-	 @Override
-	 public boolean onOptionsItemSelected(MenuItem item) {
-	     // Handle menu selection
-	     switch (item.getItemId()) {
-	     case R.id.config_screen:
-	         //show list of image size.
-	         return true;
-	     case R.id.quit_menu:
-	         finish();
-	         return true;
-	     default:
-	         return super.onOptionsItemSelected(item);
-	     }
-	 }
+
+	//Show menu options only for main screen.
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.config_menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) 
+	{
+		// Handle menu selection
+		switch (item.getItemId())
+		{
+		case R.id.small_image:
+			configureImageSize(QRConstants.IMAGE_SMALL);
+			return true;
+		case R.id.medium_image:
+			configureImageSize(QRConstants.IMAGE_MEDIUM);
+			return true;
+		case R.id.large_image:
+			configureImageSize(QRConstants.IMAGE_LARGE);
+			return true;
+		case R.id.quit_menu:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	private void configureImageSize(String imageSizeValue)
+	{
+		 prefsEditor.putString("imageSize", imageSizeValue);
+		 prefsEditor.commit();	
+		 Log.d(imageSizeValue, "Image Size Changed");
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -67,8 +90,9 @@ public class BuildMainPage extends ListActivity
 		//setContentView(R.layout.main);
 		title =  getResources().getStringArray(R.array.title);
 		detail = getResources().getStringArray(R.array.detail);
-		mInflater = (LayoutInflater) getSystemService(
-				Activity.LAYOUT_INFLATER_SERVICE);
+		mInflater = (LayoutInflater) getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		imageSizePref = this.getSharedPreferences("imagePref",MODE_WORLD_READABLE);
+		prefsEditor = imageSizePref.edit();
 		data = new Vector<RowData>();
 		for(int i=0;i<title.length;i++){
 			try {
@@ -108,7 +132,7 @@ public class BuildMainPage extends ListActivity
 			intent = new Intent(BuildMainPage.this,EmailViewActivity.class);
 			startActivity(intent);
 		}
-		
+
 	}
 
 	@Override
@@ -116,7 +140,7 @@ public class BuildMainPage extends ListActivity
 	{
 		super.finish();
 	}
-	
+
 	private class RowData
 	{
 		protected int mId;
