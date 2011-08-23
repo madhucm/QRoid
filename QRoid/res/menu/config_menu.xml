@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item android:id="@+id/config_screen" android:title="Image size">
-		<menu>
-			<group android:id="@+id/exclusive_checkable_group"
-				android:checkableBehavior="single">
-				<!-- Notice how these items inherit from the group. -->
-				<item android:id="@+id/small_image" android:title="Small" />
-				<item android:id="@+id/medium_image" android:title="Medium" />
-				<item android:id="@+id/large_image" android:title="Large" />
-			</group>
-		</menu>
+
 	</item>
 	<item android:id="@+id/quit_menu" android:title="Quit"></item>
 </menu>

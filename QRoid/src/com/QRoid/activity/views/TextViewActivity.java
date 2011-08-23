@@ -25,7 +25,7 @@ public class TextViewActivity extends Activity{
 		if(text.length() > 0)
 		{
 			Intent in = new Intent(TextViewActivity.this,QRImageView.class);
-			String url = "http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl="
+			String url = "&chl="
 	                + URLEncoder.encode(text);
 			in.putExtra("url", url);
 			startActivity(in);

@@ -16,6 +16,7 @@
 		<activity android:label="Create EMAIL QR code." android:name="com.QRoid.activity.views.EmailViewActivity"></activity>
 		<activity android:label="Create Contact QR code." android:name="com.QRoid.activity.views.ContactViewActivity"></activity>
 		<activity android:label="Your QR Image." android:name="com.QRoid.activity.views.QRImageView"></activity>
+		<activity android:label="Image size prefernece" android:name="com.QRoid.activity.views.Preferences"/>
 	</application>
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

@@ -21,4 +21,14 @@
     	<item>Creates Contact QR Code</item>
     	<item>Creates Email QR Code</item>
     </string-array>
+    <string-array name="image_size_array">
+    	<item>Small</item>
+    	<item>Medium</item>
+    	<item>Large</item>
+    </string-array>
+    <string-array name="image_size_value">
+    	<item>120x120</item>
+    	<item>230x230</item>
+    	<item>350x350</item>
+    </string-array>
 </resources>

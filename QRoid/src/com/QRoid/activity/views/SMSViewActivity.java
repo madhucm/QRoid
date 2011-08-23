@@ -29,7 +29,7 @@ public class SMSViewActivity extends Activity
 		if(phoneNumber.length() == 10 && editMessage.length() > 0)
 		{
 			Intent in = new Intent(SMSViewActivity.this,QRImageView.class);
-			String url ="http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=smsto%3A"+URLEncoder.encode(phoneNumber)+"%3A"+URLEncoder.encode(smsMessage);
+			String url ="&chl=smsto%3A"+URLEncoder.encode(phoneNumber)+"%3A"+URLEncoder.encode(smsMessage);
 			in.putExtra("url", url);
 			startActivity(in);
 			finish();

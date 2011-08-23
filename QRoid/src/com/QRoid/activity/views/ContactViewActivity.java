@@ -27,7 +27,7 @@ public class ContactViewActivity extends Activity
 		String website = ((EditText) findViewById(R.id.contactWebsite)).getText().toString();;
 
 		Intent in = new Intent(ContactViewActivity.this,QRImageView.class);
-		String url = "http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=MECARD%3AN%3A"+URLEncoder.encode(name)+"%3BTEL%3A"+URLEncoder.encode(phone)+"%3BURL%3A"+URLEncoder.encode(website)+"%3BEMAIL%3A"+URLEncoder.encode(email)+"%3BADR%3A"+URLEncoder.encode(address);
+		String url = "&chl=MECARD%3AN%3A"+URLEncoder.encode(name)+"%3BTEL%3A"+URLEncoder.encode(phone)+"%3BURL%3A"+URLEncoder.encode(website)+"%3BEMAIL%3A"+URLEncoder.encode(email)+"%3BADR%3A"+URLEncoder.encode(address);
 		in.putExtra("url", url);
 		startActivity(in);
 		finish();

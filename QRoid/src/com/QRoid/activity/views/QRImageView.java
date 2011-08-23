@@ -6,6 +6,7 @@ import java.net.URL;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -14,17 +15,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.QRoid.common.QRConstants;
 import com.QRoid.main.BuildMainPage;
 import com.QRoid.main.R;
 
-public class QRImageView extends Activity{
-	
+public class QRImageView extends Activity
+{
+
 	String qrURL = null;
-	
+	SharedPreferences imageSizePref = null;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qrview);
+		imageSizePref = this.getSharedPreferences("imagePref",MODE_WORLD_READABLE);
 		Bundle bundle = getIntent().getExtras();
 
 		if(bundle == null)
@@ -34,7 +39,7 @@ public class QRImageView extends Activity{
 		new QRImageLoader().execute(qrURL);
 
 	}
-	
+
 	class QRImageLoader extends AsyncTask<String, Void, Void>{
 		ImageView imageView = (ImageView) findViewById(R.id.QRImage);;
 		Bitmap qrBitmap = null;
@@ -48,7 +53,8 @@ public class QRImageView extends Activity{
 		@Override
 		protected Void doInBackground(String... arg0) {
 			try {
-				URL imageURL = new URL(arg0[0]);
+				String urlString = QRConstants.QR_URL+getImageSize()+arg0[0];
+				URL imageURL = new URL(urlString);
 				qrBitmap = BitmapFactory.decodeStream(imageURL.openStream());
 
 			} catch (Exception e) {
@@ -59,12 +65,12 @@ public class QRImageView extends Activity{
 
 		protected void onPostExecute(Void unused)
 		{
-			 Dialog.dismiss();
+			Dialog.dismiss();
 			imageView.setImageBitmap(qrBitmap);
 
 		}
 	}
-	
+
 	public void goHome(View view)
 	{
 		Intent in = new Intent(QRImageView.this,BuildMainPage.class);
@@ -76,5 +82,11 @@ public class QRImageView extends Activity{
 	public void finish()
 	{
 		super.finish();
+	}
+
+	private String getImageSize()
+	{
+		String imageSize = imageSizePref.getString("imageSize", "350x350");
+		return imageSize;
 	}
 }

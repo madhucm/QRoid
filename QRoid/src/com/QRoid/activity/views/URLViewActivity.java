@@ -27,7 +27,7 @@ public class URLViewActivity extends Activity
 		if(text.length() > 0)
 		{
 			Intent in = new Intent(URLViewActivity.this,QRImageView.class);
-			String url = "http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=http%3A%2F%2F"
+			String url = "&chl=http%3A%2F%2F"
 				+ URLEncoder.encode(text);
 			in.putExtra("url", url);
 			startActivity(in);

@@ -12,8 +12,10 @@ import com.QRoid.activity.views.URLViewActivity;
 import com.QRoid.common.QRConstants;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ParseException;
@@ -60,15 +62,10 @@ public class BuildMainPage extends ListActivity
 		// Handle menu selection
 		switch (item.getItemId())
 		{
-		case R.id.small_image:
-			configureImageSize(QRConstants.IMAGE_SMALL);
+		case R.id.config_screen:
+			showImageScreenDialog();			
 			return true;
-		case R.id.medium_image:
-			configureImageSize(QRConstants.IMAGE_MEDIUM);
-			return true;
-		case R.id.large_image:
-			configureImageSize(QRConstants.IMAGE_LARGE);
-			return true;
+		
 		case R.id.quit_menu:
 			finish();
 			return true;
@@ -77,7 +74,38 @@ public class BuildMainPage extends ListActivity
 		}
 	}
 
-	private void configureImageSize(String imageSizeValue)
+	private void showImageScreenDialog()
+	{
+		final CharSequence[] items = getResources().getStringArray(R.array.image_size_array);
+		final CharSequence[] size = getResources().getStringArray(R.array.image_size_value);
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Select Image Size");
+		builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+		    public void onClick(DialogInterface dialog, int item) {
+		    	setImageSize(size[item].toString());		    	
+		        Toast.makeText(getApplicationContext(), size[item], Toast.LENGTH_SHORT).show();
+		        dialog.cancel();
+		    }
+		});
+		/*builder.setCancelable(false);
+	       builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	               
+	           }
+	       })
+	       .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	                dialog.cancel();
+	           }
+	       });*/
+		AlertDialog alert = builder.create();
+		alert.getListView().setItemChecked(1, true); // It didnot work :-(
+		alert.show();
+		
+	}
+
+	private void setImageSize(String imageSizeValue)
 	{
 		 prefsEditor.putString("imageSize", imageSizeValue);
 		 prefsEditor.commit();	
